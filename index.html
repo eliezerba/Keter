@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>צפיין כתר ארם צובא</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=Noto+Serif+Hebrew:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-strip">
+      <div class="brand-copy">
+        <h1>צפיין כתר ארם צובא</h1>
+        <p class="subtitle">פלטפורמת עיון, מחקר והשוואה מסונכרנת בין דף, מילה ופסוק</p>
+      </div>
+      <div class="brand-logos" aria-label="לוגואים של הגופים השותפים">
+        <div class="logo-shell"><img class="brand-logo ybz" src="YBZ.jpg" alt="יד יצחק בן צבי"></div>
+        <div class="logo-shell"><img class="brand-logo elijah" src="light.png" alt="מעבדת אליהו - אוניברסיטת חיפה"></div>
+      </div>
+    </div>
+
+    <div class="controls controls-primary">
+      <button id="nextBtn" type="button">העמוד הקודם</button>
+      <select id="pageSelect" aria-label="בחירת עמוד"></select>
+      <button id="prevBtn" type="button">העמוד הבא</button>
+      <button id="pickFolderBtn" type="button">בחירת תיקייה מקומית</button>
+      <input id="folderInput" type="file" webkitdirectory multiple hidden>
+      <input id="driveFolderInput" type="text" class="search-input drive-input" placeholder="קישור/מזהה תיקיית Google Drive" aria-label="קישור או מזהה תיקיית Google Drive" hidden>
+      <input id="driveApiKeyInput" type="password" class="search-input drive-input" placeholder="Google API Key" aria-label="Google Drive API Key" hidden>
+      <button id="loadDriveBtn" type="button" hidden>טעינה מ-Google Drive</button>
+    </div>
+
+    <div class="controls controls-secondary">
+      <label class="field compact" for="searchInput">חיפוש בכל הדפים</label>
+      <input id="searchInput" type="search" class="search-input" placeholder="לדוגמה: וַיְהִי / אדני / ישראל" aria-label="חיפוש בטקסט">
+      <button id="searchPrevBtn" type="button" class="ghost-btn">תוצאה קודמת</button>
+      <button id="searchNextBtn" type="button" class="ghost-btn">תוצאה הבאה</button>
+      <button id="clearSearchBtn" type="button" class="ghost-btn">נקה חיפוש</button>
+      <div id="searchMeta" class="search-meta" aria-live="polite"></div>
+    </div>
+
+    <div class="controls controls-tertiary">
+      <label class="field compact" for="bookSelect">ניווט מהיר</label>
+      <select id="bookSelect" aria-label="בחירת ספר"></select>
+      <select id="chapterSelect" aria-label="בחירת פרק"></select>
+      <select id="verseSelect" aria-label="בחירת פסוק"></select>
+      <button id="goVerseBtn" type="button">קפיצה לפסוק</button>
+      <span class="toggle-group" aria-label="הצגת סימנים">
+        <button id="toggleNikud" type="button" class="toggle-btn is-active" title="הצג/הסתר ניקוד">נִיקוּד</button>
+        <button id="toggleTaamim" type="button" class="toggle-btn is-active" title="הצג/הסתר טעמים">טְעָמִים</button>
+      </span>
+    </div>
+
+    <div id="status" class="status" aria-live="polite"></div>
+  </header>
+
+  <main class="layout">
+    <section class="panel text-panel">
+      <div class="panel-head">
+        <h2 id="bookTitle"></h2>
+      </div>
+      <div id="hierarchy" class="hierarchy"></div>
+    </section>
+
+    <section class="panel image-panel">
+      <div class="panel-head image-head">
+        <h2>פקסימיליה</h2>
+        <span class="hint-chip">לחיצה על פסוק מדגישה רצף שורות בתמונה</span>
+      </div>
+      <div class="image-stage" id="imageStage">
+        <img id="folioImage" alt="עמוד כתר ארם צובא">
+        <svg id="overlay" aria-label="תיבות מילים" role="img"></svg>
+      </div>
+      <p class="image-help">לחיצה על מילה בתמונה או בטקסט מדגישה את המקבילה בצד השני.</p>
+    </section>
+  </main>
+
+  <script src="viewer.js"></script>
+</body>
+</html>
